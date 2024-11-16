@@ -2,6 +2,9 @@ package class01;
 
 import java.util.Arrays;
 
+import static A_utils.ArrayUtils.generateRandomArray;
+import static A_utils.CommonUtils.*;
+
 public class Code04_BSExist {
 
 	public static boolean exist(int[] sortedArr, int num) {
@@ -26,24 +29,7 @@ public class Code04_BSExist {
 	}
 	
 	// for test
-	public static boolean test(int[] sortedArr, int num) {
-		for(int cur : sortedArr) {
-			if(cur == num) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	
-	// for test
-	public static int[] generateRandomArray(int maxSize, int maxValue) {
-		int[] arr = new int[(int) ((maxSize + 1) * Math.random())];
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
-		}
-		return arr;
-	}
+
 	
 	public static void main(String[] args) {
 		int testTime = 500000;
@@ -54,7 +40,7 @@ public class Code04_BSExist {
 			int[] arr = generateRandomArray(maxSize, maxValue);
 			Arrays.sort(arr);
 			int value = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
-			if (test(arr, value) != exist(arr, value)) {
+			if (isExistNumInArr(arr, value) != exist(arr, value)) {
 				succeed = false;
 				break;
 			}
